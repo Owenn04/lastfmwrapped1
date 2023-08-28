@@ -2,8 +2,8 @@
     <div class="container">
       <div class="container-content">
         <div class="container-content-inner">
-          <div class="title">
             <img src="https://download.logo.wine/logo/Last.fm/Last.fm-Logo.wine.png" />
+          <div class="title">
             <h1 class="hide">Wrapped</h1>
           </div>
           <div class="par">
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-  </template>
+</template>
   
 <style scoped>
   /* Reset and global styles */
@@ -27,6 +27,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #242424;
   }
   
   /* Additional styles */
@@ -48,11 +49,13 @@
   }
   
   img {
+    max-width: 100%;
     width: 80vh;
     margin-bottom: -15vh;
     padding-right: 200px;
     animation: slideIn 1.5s ease-in-out forwards;
     opacity: 0; 
+    padding-bottom: 1vh;
     }
   
     .par p {
@@ -75,6 +78,7 @@
     transform: translateY(50px);
     animation: slideUp .8s ease-in-out forwards 1s;
     opacity: 0;
+    color: #fff
 
   }
   
