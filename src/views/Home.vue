@@ -1,7 +1,125 @@
 <template>
-    <h1>Welcome Home</h1>
-</template>
+    <div class="container">
+      <div class="container-content">
+        <div class="container-content-inner">
+          <div class="title">
+            <img src="https://download.logo.wine/logo/Last.fm/Last.fm-Logo.wine.png" />
+            <h1 class="hide">Wrapped</h1>
+          </div>
+          <div class="par">
+            <p class="hide">
+              View your lastFm statistics with last.fm wrapped. Click the button below to connect.
+            </p>
+          </div>
+          <div class="btns">
+            <button class="btns-more hide">Connect to LastFm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+<style scoped>
+  /* Reset and global styles */
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Additional styles */
+  
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    animation: expand .8s ease forwards;
+    position: relative;
+    font-family: 'Raleway', sans-serif;
+    transition: all .8s ease;
+  }
+  
+  .container-content-inner {
+    width: 100%;
+    margin-left: 80px;
+  }
+  
+  img {
+    width: 80vh;
+    margin-bottom: -15vh;
+    padding-right: 200px;
+    animation: slideIn 1.5s ease-in-out forwards;
+    opacity: 0; 
+    }
+  
+    .par p {
+    line-height: 28px;
+    transform: translateY(300px);
+    animation: slideUp .8s ease-in-out forwards .8s;
+    opacity: 0; 
+    }
+  
+  .btns-more {
+    display: flex;
+    border: 2px solid var(--contrast-color, #bb0c0cce);
+    border-radius: 50px;
+    padding: 8px 12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    position: relative;
+    margin-top: 15px;
+    outline: none;
+    transform: translateY(50px);
+    animation: slideUp .8s ease-in-out forwards 1s;
+    opacity: 0;
 
-<script setup>
-// import components here:
-</script>
+  }
+  
+  .title h1 {
+    font-size: var(--heading-font-size, 80px);
+    margin-bottom: var(--heading-margin-bottom, 20px);
+    transform: translateY(100px);
+    animation: slideUp 0.8s ease forwards 0.5s;
+    font-style: var(--heading-font-style, normal);
+    font-weight: var(--heading-font-weight, 500);
+    text-transform: var(--heading-font-text-transform, none);
+    letter-spacing: var(--heading-font-letter-spacing, 0em);
+    line-height: var(--heading-font-line-height, 1.5em);
+    opacity: 0;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateX(500px) scale(.2);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0px) scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    0% {
+      transform: translateY(300px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes expand {
+    0% {
+      transform: translateX(1400px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+  </style>
+  
