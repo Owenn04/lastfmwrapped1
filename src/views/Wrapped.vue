@@ -14,13 +14,13 @@ const errorMessage = ref(null);
 const getUserInfo = async () => {
 
   try {
-    const response = await fetch('/.netlify/functions/get-username');
+    const response = await fetch(`/.netlify/functions/get-username?token=${token.value}`);
 
     const data = await response.json();
     console.log(data)
 
-    // username.value = data.username;
-    // console.log(username)
+    username.value = data.username;
+    console.log(username)
   } catch (error) {
     errorMessage.value = error.message;
     console.log(error)
