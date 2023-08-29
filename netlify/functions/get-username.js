@@ -1,6 +1,7 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async function (event, context) {
+
+export const handler = async function (event, context) {
   const { token } = event.queryStringParameters;
   const apiKey = process.env.VITE_API_KEY; // Get the API key from your Netlify environment
 
@@ -29,12 +30,3 @@ exports.handler = async function (event, context) {
   }
 };
 
-// exports.handler = async (event, context) => {
-
-//     const data = {test: "test"}
-
-//     return{
-//         statusCode: 200,
-//         body: JSON.stringify(data),
-//     }
-// }
