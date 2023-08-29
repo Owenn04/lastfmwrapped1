@@ -59,6 +59,7 @@ exports.handler = async (event, context) => {
 
         // Construct the endpoint
         const endpoint = `http://ws.audioscrobbler.com/2.0/?${new URLSearchParams(parameters).toString()}&api_sig=${apiSig}`;
+        console.log(endpoint)
 
         // Make the API request
         const response = await axios.get(endpoint);
