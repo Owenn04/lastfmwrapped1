@@ -5,9 +5,7 @@ const url = window.location.href;
 const urlParams = new URLSearchParams(new URL(url).search);
 
 const token = ref(urlParams.get('token'));
-
 const username = ref(null);
-
 
 const getSessionInfo = async (token) => {
     try {
@@ -16,32 +14,16 @@ const getSessionInfo = async (token) => {
             throw new Error('Failed to fetch session info');
         }
         const data = await response.json();
-        return data.username; // This line was commented out, but you should uncomment it.
-
+        return data.username;
     } catch (error) {
         console.error('Error fetching session info:', error);
         throw error; 
     }
-}
+};
 
-// const getUserInfo = async () => {
-//   try {
-//     const response = await fetch(`/.netlify/functions/get-username?token=${token.value}`);
-
-//     const data = await response.json();
-//     console.log(data)
-
-//     username.value = data.username;
-//     console.log(username)
-//   } catch (error) {
-//     errorMessage.value = error.message;
-//     console.log(error)
-//   }
-// };
-
-onMounted(() => {
+onMounted(async () => {
     try {
-        const fetchedUsername = getSessionInfo(token.value);
+        const fetchedUsername = await getSessionInfo(token.value);
         username.value = fetchedUsername;
     } catch (error) {
         console.error('Error in mount call:', error);
