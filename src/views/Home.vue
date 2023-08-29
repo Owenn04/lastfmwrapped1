@@ -1,3 +1,5 @@
+
+
 <template>
     <div class="container">
       <div class="container-content">
@@ -12,12 +14,31 @@
             </p>
           </div>
           <div class="btns">
-            <button class="btns-more hide">Connect to LastFm</button>
+            <button @click="authenticateUser()" class="btns-more hide">Connect to LastFm</button>
           </div>
         </div>
       </div>
     </div>
 </template>
+
+<script setup>
+
+const API_KEY = import.meta.env.VITE_API_KEY;
+const REDIRECT_URL = import.meta.env.VITE_REDIRECT_URL;
+//`http://www.last.fm/api/auth/?api_key=${API_KEY}&cb=${REDIRECT_URL}`;
+
+//http://www.last.fm/api/auth/?api_key=efaaa8e498389379d0de403fa0dbaccf&cb=http://localhost:5173/wrapped
+
+
+const authenticateUser = () => {
+  const newUrl = `http://www.last.fm/api/auth/?api_key=${API_KEY}&cb=${REDIRECT_URL}`;
+  window.location.href = newUrl;
+  console.log(newUrl);
+}
+
+
+
+</script>
   
 <style scoped>
   /* Reset and global styles */
@@ -27,6 +48,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #242424;
+  }
+
+  template{
     background-color: #242424;
   }
   
@@ -44,14 +69,16 @@
   }
   
   .container-content-inner {
-    width: 100%;
-    margin-left: 80px;
+    max-width: 100%;
+    margin-left: 4vh; 
   }
   
   img {
-    max-width: 100%;
+    display: flex;
+    align-items: center;
+    max-width: 80vh;
     width: 80vh;
-    margin-bottom: -15vh;
+    margin-bottom: -14vh;
     padding-right: 200px;
     animation: slideIn 1.5s ease-in-out forwards;
     opacity: 0; 
@@ -59,10 +86,13 @@
     }
   
     .par p {
+    display: flex;
+    align-items: center;
     line-height: 28px;
     transform: translateY(300px);
     animation: slideUp .8s ease-in-out forwards .8s;
     opacity: 0; 
+    font-size: 16;
     }
   
   .btns-more {
