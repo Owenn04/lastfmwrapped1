@@ -1,5 +1,4 @@
 
-
 <template>
     <div class="container">
       <div class="container-content">
@@ -25,10 +24,6 @@
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const REDIRECT_URL = import.meta.env.VITE_REDIRECT_URL;
-//`http://www.last.fm/api/auth/?api_key=${API_KEY}&cb=${REDIRECT_URL}`;
-
-//http://www.last.fm/api/auth/?api_key=efaaa8e498389379d0de403fa0dbaccf&cb=http://localhost:5173/wrapped
-
 
 const authenticateUser = () => {
   const newUrl = `http://www.last.fm/api/auth/?api_key=${API_KEY}&cb=${REDIRECT_URL}`;
