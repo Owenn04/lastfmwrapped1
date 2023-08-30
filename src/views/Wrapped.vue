@@ -37,6 +37,7 @@ onMounted(async () => {
 
     try {
         if (!storedUsername) {
+            console.log("about to getSessionInfo")
             const fetchedUsername = await getSessionInfo(token);
             console.log("Fetched", fetchedUsername);
             sessionStorage.setItem('username', fetchedUsername);
