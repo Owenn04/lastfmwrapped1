@@ -15,8 +15,8 @@
 
   ## (optional) Settings for Netlify Dev
   ## https://github.com/netlify/cli/blob/main/docs/netlify-dev.md#project-detection
-  # [dev]
-  #  command = "npm run dev"
-  #  targetPort = 5173
+  #[dev]
+  # command = "npm run dev"
+  # targetPort = 5173
 
   ## more info on configuring this file: https://docs.netlify.com/configure-builds/file-based-configuration/
