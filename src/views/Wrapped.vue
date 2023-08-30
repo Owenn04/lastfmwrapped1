@@ -7,8 +7,10 @@ const token = urlParams.get('token');
 
 //const username = ref(null);
 const storedUsername = sessionStorage.getItem('username');
+console.log("stored:", storedUsername)
 const period = ref("12Months")
-const tracks = ref([]);
+
+
 
 const getSessionInfo = async (token) => {
     console.log(token)
@@ -26,10 +28,11 @@ const getSessionInfo = async (token) => {
     }
 };
 
+
+const tracks = ref([]);
+
 onMounted(async () => {
     try {
-        const storedUsername = sessionStorage.getItem('username');
-
         if (!storedUsername) {
             const fetchedUsername = await getSessionInfo(token);
             console.log("Fetched", fetchedUsername);
@@ -40,8 +43,15 @@ onMounted(async () => {
             tracks.value = await getTopTracks(storedUsername, period.value);
         }
 
+        for (const track of tracks.value) {
+            const image = await getTrackImage(track.trackname, track.artistname);
+            track.image = image;
+            console.log('image', image);
+        }
     } catch (error) {
         console.error('Error in mount call:', error);
+    } finally {
+        console.log("tracks finally", tracks.value);
     }
 });
 
@@ -53,13 +63,38 @@ const getTopTracks = async (username, period) => {
             throw new Error('Failed to fetch track info');
         }
         const data = await response.json();
+        //console.log(data)
         return data; 
+        
     } catch (error) {
         console.error('Error fetching track info:', error);
         throw error;
     }
 }
+
+const getTrackImage = async (trackname, artistname) => {
+    //console.log("getTrackImageVariables", trackname, artistname)
+    try {
+        const response = await fetch(`/.netlify/functions/get-track-image?track=${trackname}&artist=${artistname}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch track image');
+        }
+        const data = await response.json();
+        console.log("image data", data)
+        return data
+
+    } catch (error) {
+        console.error("Error fetching track image:", error);
+        throw error;
+    }
+}
+
+
+
+
 </script>
+
+
 
 
 <template>
@@ -174,9 +209,7 @@ const getTopTracks = async (username, period) => {
     text-align: left;
 }
 
-.track-name{
 
-}
 
 .track-artist{
     margin-top: -20px;

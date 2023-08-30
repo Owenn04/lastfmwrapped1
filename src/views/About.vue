@@ -15,7 +15,7 @@
             </div>
             <div class = 'content-two'>
                 <h2>Privacy</h2>
-                <p>This application uses a session token to get access to your last.fm account. Information stored is stored in the client for a maxiumum of 30 minutes. Nothing is externally stored.</p>
+                <p>This application uses a session token to get access to your last.fm account. Information stored is stored in the client for a maxiumum of 30 minutes. Nothing is externally stored. It is safe as long as you session doesnt get hacked.</p>
             </div>
             <div class = 'content-three'>
                 <h2>Socials</h2>
@@ -43,7 +43,6 @@
     font-family: sans-serif;
     border: 2px solid #bb0c0cce;
     border-radius: 20px;
-
     animation: expand .8s ease forwards;
     position: relative;
     
@@ -75,6 +74,7 @@ p{
     font-weight: 200;
     padding-left: 4vh;
     text-align: left;
+    padding-right: 4vh;
 }
 
 .social-icons{
@@ -137,9 +137,6 @@ p{
     text-align: left;
 }
 
-.track-name{
-
-}
 
 .track-artist{
     margin-top: -20px;

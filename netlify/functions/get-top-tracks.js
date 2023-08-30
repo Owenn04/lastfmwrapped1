@@ -2,8 +2,9 @@ const axios = require("axios");
 
 exports.handler = async (event, context) => {
     const { username, period } = event.queryStringParameters;
+    const apiKey = process.env.VITE_API_KEY;
 
-    const apiUrl = `https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${username}&period=${period}&limit=5&api_key=efaaa8e498389379d0de403fa0dbaccf&format=json`;
+    const apiUrl = `https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${username}&period=${period}&limit=5&api_key=${apiKey}&format=json`;
 
     try {
         const apiResponse = await axios.get(apiUrl);
@@ -12,8 +13,7 @@ exports.handler = async (event, context) => {
         const formattedTracks = topTracks.map((track, index) => ({
             rank: index + 1,
             trackname: track.name,
-            artistname: track.artist.name,
-            image: track.image.find(img => img.size === "medium")["#text"]
+            artistname: track.artist.name
             
         }));
         return {
