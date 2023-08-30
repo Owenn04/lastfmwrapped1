@@ -5,10 +5,10 @@ const url = window.location.href;
 const urlParams = new URLSearchParams(new URL(url).search);
 const token = urlParams.get('token');
 
-//const username = ref(null);
-const storedUsername = sessionStorage.getItem('username');
-console.log("stored:", storedUsername)
+
 const period = ref("12Months")
+
+const username = ref('');
 
 
 
@@ -32,14 +32,19 @@ const getSessionInfo = async (token) => {
 const tracks = ref([]);
 
 onMounted(async () => {
+
+    const storedUsername = sessionStorage.getItem('username');
+
     try {
         if (!storedUsername) {
             const fetchedUsername = await getSessionInfo(token);
             console.log("Fetched", fetchedUsername);
             sessionStorage.setItem('username', fetchedUsername);
+            username.value = fetchedUsername
             tracks.value = await getTopTracks(fetchedUsername, period.value);
         } else {
             console.log("Stored", storedUsername);
+            username.value = storedUsername;
             tracks.value = await getTopTracks(storedUsername, period.value);
         }
 
@@ -108,7 +113,7 @@ const getTrackImage = async (trackname, artistname) => {
           </div>
         </div>
         <div class="container-content-content">
-          <h3 class="view-title">{{ storedUsername }}'s top tracks</h3>
+          <h3 class="view-title">{{ username }}'s top tracks</h3>
           <div v-if="tracks.length" class="track-list">
             <div v-for="(track, index) in tracks" :key="index" class="item">
               <h1 class="track-number">{{ index + 1 }}</h1>
