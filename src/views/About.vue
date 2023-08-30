@@ -11,15 +11,15 @@
         <div class="container-content-content">
             <div class = 'content-one'>
                 <h2>About</h2>
-                <p>Last.Fm wrapped was developed by Owenn04 with hate because of the wack api</p>
+                <p>Last.Fm wrapped was developed by Owenn04, a computer science student at Queen's University</p>
             </div>
             <div class = 'content-two'>
                 <h2>Privacy</h2>
-                <p>This application uses a session token to get access to your last.fm account. Information stored is stored in the client for a maxiumum of 30 minutes. Nothing is externally stored. It is safe as long as you session doesnt get hacked.</p>
+                <p>This application is completely secure and not malicious. Your Lastfm session token is only valid for 30 minutes and is never stored.</p>
             </div>
             <div class = 'content-three'>
                 <h2>Socials</h2>
-                <p>This application is soon to be open-souce. Feel free to make a contribution.</p>
+                <p>Currently this repo is private until netlify can get make using environement variables easier.</p>
                 <a href = 'https://github.com/Owenn04/lastfmwrapped1'>
                     <font-awesome-icon class="social-icons"  :icon="['fab', 'github']" ></font-awesome-icon>
                 </a>
